@@ -1,0 +1,230 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String   @id @default(cuid())
+  auth0Id  String   @unique
+  image    String?
+  telephone    String?
+  phone   String?
+  countryId String?
+  nationalityId String?
+  province  String?
+  gender  String?
+  birthdate DateTime?
+  documentType String?
+  documentNumber String?
+  civilStatus String?
+  hasLicense Boolean?
+  hasVehicule Boolean?
+  hasRelationInCompany Boolean?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  country Country? @relation(fields: [countryId], references: [code], onDelete: SetNull, onUpdate: Cascade)
+  relationship Relationship[]
+  answers Answer[]
+  workExperience WorkExperience[]
+  education Education[]
+  language Language[]
+  personalReference PersonalReference[]
+  professionalReference ProfessionalReference[]
+  applications Application[]
+}
+
+model Relationship{
+  id       String   @id @default(cuid())
+  userId   String
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  name String
+  phone String?
+  relationship String
+  isInTheCompany Boolean
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Question{
+  id       String   @id @default(cuid())
+  question String
+  type String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  options QuestionOption[]
+  answers Answer[]
+}
+
+model QuestionOption{
+  id       String   @id @default(cuid())
+  questionId String
+  question    Question     @relation(fields: [questionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  option String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Answer{
+  id       String   @id @default(cuid())
+  userId String
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  questionId String?
+  question    Question?     @relation(fields: [questionId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  answer Json?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Experiencia laboral
+model WorkExperience{
+  id       String   @id @default(cuid())
+  company String
+  position String
+  currency String?
+  salary String?
+  area String
+  supervisor String
+  industry String?
+  functions String?
+  phone String?
+  startDate DateTime
+  endDate DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId String
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  }
+
+
+// Educación
+model Education{
+  id       String   @id @default(cuid())
+  institution String
+  title String
+  area String
+  status Boolean
+  grade String
+  startDate DateTime
+  endDate DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  grades Grade @relation(fields: [grade], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId String
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)  
+}
+
+// Categoría de educación
+model Grade{
+  id       String   @id @default(cuid())
+  name String
+  priority Int?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  education Education[]
+}
+
+// Idioma
+model Language{
+  id       String   @id @default(cuid())
+  name String
+  level String
+  userId String
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+}
+
+// Referencia personal
+model PersonalReference{
+  id       String   @id @default(cuid())
+  userId String
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  name String
+  phone String
+  relationship String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Referencia profesional
+model ProfessionalReference{
+  id       String   @id @default(cuid())
+  userId String
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  name String
+  phone String
+  company String
+  position String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+////////////////////////////////////////////////////////////////////
+
+// Países
+model Country{
+  id       String   @id @default(cuid())
+  name String
+  continent String
+  capital String
+  code String @unique
+  code2 String @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  users User[]
+}
+
+
+////////////////////////////////////////////////////////////////////
+
+// Categorías de vacantes
+model Category{
+  id       String   @id @default(cuid())
+  name String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  vacancies Vacancy[]
+}
+
+// Vacantes
+model Vacancy{
+  id       String   @id @default(cuid())
+  title String
+  description String
+  requirements String
+  salary String
+  currency String
+  startDate DateTime
+  status Boolean
+  endDate DateTime?
+  category Category @relation(fields: [categoryId], references: [id])
+  categoryId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  applications Application[]
+}
+
+// Aplicaciones
+model Application{
+  id       String   @id @default(cuid())
+  userId String
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  vacancyId String
+  vacancy    Vacancy     @relation(fields: [vacancyId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+
