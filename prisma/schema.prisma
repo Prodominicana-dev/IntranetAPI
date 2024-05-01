@@ -113,18 +113,18 @@ model Education{
   title String
   area String
   status Boolean
-  grade String
+  degreeId String
   startDate DateTime
   endDate DateTime?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  grades Grade @relation(fields: [grade], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  degrees Degree @relation(fields: [degreeId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId String
   user    User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)  
 }
 
 // Categoría de educación
-model Grade{
+model Degree{
   id       String   @id @default(cuid())
   name String
   priority Int?

@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsEmpty, IsString, IsNumber } from "class-validator";
 
-export class CreateGradeDto {
+export class CreateDegreeDto {
   @IsNotEmpty()
   @IsString()
   name: string;
@@ -10,7 +10,7 @@ export class CreateGradeDto {
   priority?: number;
 }
 
-export class UpdateGradeDto {
+export class UpdateDegreeDto {
   @IsEmpty()
   @IsString()
   name?: string;

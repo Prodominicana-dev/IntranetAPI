@@ -19,7 +19,7 @@ export class CreateEducationDto {
 
     @IsNotEmpty()
     @IsString()
-    grade: string;
+    degreeId: string;
 
     @IsNotEmpty()
     @IsDate()
@@ -53,7 +53,7 @@ export class UpdateEducationDto {
 
     @IsEmpty()
     @IsString()
-    grade?: string;
+    degreeId?: string;
 
     @IsEmpty()
     @IsDate()
