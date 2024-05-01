@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty, IsArray, IsOptional } from 'class-validator';
+import { IsString, IsNotEmpty, IsArray, IsOptional, IsEmpty } from 'class-validator';
 
 export class CreateQuestionDto {
   @IsNotEmpty()
@@ -12,9 +12,11 @@ export class CreateQuestionDto {
 
 export class UpdateQuestionDto {
   
+    @IsEmpty()
   @IsString()
   question?: string;
 
+  @IsEmpty()
   @IsString()
   type?: string;
 }

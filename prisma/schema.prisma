@@ -222,6 +222,7 @@ model Application{
   user    User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   vacancyId String
   vacancy    Vacancy     @relation(fields: [vacancyId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  status Boolean @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

@@ -15,6 +15,7 @@ import { ProfessionalReferenceModule } from './professional-reference/profession
 import { CategoryModule } from './category/category.module';
 import { VacancyModule } from './vacancy/vacancy.module';
 import { ApplicationModule } from './application/application.module';
+import { GradeModule } from './grade/grade.module';
 
 @Module({
   imports: [UserModule, RelationshipModule, QuestionModule, QuestionOptionModule, AnswerModule, WorkExperienceModule, EducationModule, GradeModule, LanguageModule, PersonalReferenceModule, ProfessionalReferenceModule, CategoryModule, VacancyModule, ApplicationModule],
