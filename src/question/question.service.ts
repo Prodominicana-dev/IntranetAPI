@@ -21,6 +21,10 @@ export class QuestionService {
     async update(id: string, data: UpdateQuestionDto) {
         try {
             const question = await this.prismaService.question.update({ where: { id }, data });
+            // Revisar si la pregunta es de tipo "select", en caso de no serlo borrar las opciones, si tiene.
+            if (data.type !== 'select') {
+                await this.prismaService.questionOption.deleteMany({ where: { questionId: id } });
+            }
             return question;
         } catch (error) {
             console.log(error)
@@ -42,7 +46,7 @@ export class QuestionService {
     // Obtener todas las preguntas
     async getAll() {
         try {
-            const questions = await this.prismaService.question.findMany();
+            const questions = await this.prismaService.question.findMany({orderBy: {createdAt: 'desc'}});
             return questions;
         } catch (error) {
             console.log(error)

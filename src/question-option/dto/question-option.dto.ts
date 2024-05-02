@@ -10,6 +10,16 @@ export class CreateQuestionOptionDto {
     questionId: string;
 }
 
+export class CreateManyQuestionOptionDto {
+  @IsNotEmpty()
+  @IsString()
+  option: string;
+
+  @IsEmpty()
+    @IsString()
+    questionId?: string;
+}
+
 export class UpdateQuestionOptionDto {
   
     @IsEmpty()

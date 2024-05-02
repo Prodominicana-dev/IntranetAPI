@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Patch, Delete, Body, Param, Res } from '@nestjs/common';
-import { CreateQuestionOptionDto, UpdateQuestionOptionDto } from './dto/question-option.dto';
+import { CreateManyQuestionOptionDto, CreateQuestionOptionDto, UpdateQuestionOptionDto } from './dto/question-option.dto';
 import { Response } from 'express';
 import { QuestionOptionService } from './question-option.service';
 
@@ -18,6 +18,26 @@ export class QuestionOptionController {
         }
     }
 
+    // Crear varias opciones de una pregunta
+    @Post(':id')
+    async createMany(@Param('id') id: string, @Body() data: CreateManyQuestionOptionDto[], @Res() res: Response){
+        try {
+            // Agregar el id de la pregunta a cada opción y guardarlo en newData
+            const newData: CreateQuestionOptionDto[] = data.map((item) => {
+                return {
+                    ...item,
+                    questionId: id
+                }
+            })
+            console.log(newData)
+            const questionOptions = await this.questionOptionService.createMany(newData);
+            return res.status(201).json(questionOptions);
+        } catch (error) {
+            console.log(error)
+            return res.status(500).json({message: error.message});
+        }
+    }
+    
     // Editar una opción de pregunta
     @Patch(':id')
     async update(@Param('id') id: string, @Body() data: UpdateQuestionOptionDto, @Res() res: Response){

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { CreateQuestionOptionDto, UpdateQuestionOptionDto } from './dto/question-option.dto';
+import { CreateManyQuestionOptionDto, CreateQuestionOptionDto, UpdateQuestionOptionDto } from './dto/question-option.dto';
 
 @Injectable()
 export class QuestionOptionService {
@@ -14,6 +14,17 @@ export class QuestionOptionService {
         } catch (error) {
             console.log(error)
             throw new Error('Error al crear la opción de pregunta');
+        }
+    }
+
+    // Crear varias opciones de una pregunta
+    async createMany(data: CreateQuestionOptionDto[]){
+        try {
+            const questionOptions = await this.prismaService.questionOption.createMany({ data });
+            return questionOptions;
+        } catch (error) {
+            console.log(error)
+            throw new Error('Error al crear las opciones de pregunta');
         }
     }
 
