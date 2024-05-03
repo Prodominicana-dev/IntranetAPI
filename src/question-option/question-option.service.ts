@@ -53,7 +53,7 @@ export class QuestionOptionService {
     // Obtener todas las opciones de pregunta de una pregunta
     async getAll(questionId: string) {
         try {
-            const questionOptions = await this.prismaService.questionOption.findMany({ where: { questionId } });
+            const questionOptions = await this.prismaService.questionOption.findMany({ where: { questionId }, include: {question: true} });
             return questionOptions;
         } catch (error) {
             console.log(error)
