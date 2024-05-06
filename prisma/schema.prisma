@@ -16,11 +16,14 @@ datasource db {
 model User {
   id       String   @id @default(cuid())
   auth0Id  String   @unique
+  username String?
+  email    String?
+  name     String?
   image    String?
   telephone    String?
   phone   String?
-  countryId String?
-  nationalityId String?
+  country String?
+  nationality String?
   province  String?
   gender  String?
   birthdate DateTime?
@@ -32,7 +35,6 @@ model User {
   hasRelationInCompany Boolean?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  country Country? @relation(fields: [countryId], references: [code], onDelete: SetNull, onUpdate: Cascade)
   relationship Relationship[]
   answers Answer[]
   workExperience WorkExperience[]
@@ -172,18 +174,6 @@ model ProfessionalReference{
 
 ////////////////////////////////////////////////////////////////////
 
-// Países
-model Country{
-  id       String   @id @default(cuid())
-  name String
-  continent String
-  capital String
-  code String @unique
-  code2 String @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  users User[]
-}
 
 
 ////////////////////////////////////////////////////////////////////

@@ -1,9 +1,30 @@
-import { IsEmpty, IsString, IsNumber, IsNotEmpty, IsBooleanString, IsDateString, IsBoolean, isBooleanString } from "class-validator";
+import {
+  IsEmpty,
+  IsString,
+  IsNumber,
+  IsNotEmpty,
+  IsBooleanString,
+  IsDateString,
+  IsBoolean,
+  isBooleanString,
+} from 'class-validator';
 
 export class CreateUserDto {
   @IsNotEmpty()
   @IsString()
   auth0Id: string;
+
+  @IsEmpty()
+  @IsString()
+  name?: string;
+
+  @IsEmpty()
+  @IsString()
+  username?: string;
+
+  @IsEmpty()
+  @IsString()
+  email?: string;
 
   @IsEmpty()
   @IsString()
@@ -19,107 +40,119 @@ export class CreateUserDto {
 
   @IsEmpty()
   @IsString()
-  countryId?: string;
+  country?: string;
 
   @IsEmpty()
-    @IsString()
-    nationalityId?: string;
+  @IsString()
+  nationality?: string;
 
-    @IsEmpty()
-    @IsString()
-    province?: string;
+  @IsEmpty()
+  @IsString()
+  province?: string;
 
-    @IsEmpty()
-    @IsString()
-    gender?: string;
+  @IsEmpty()
+  @IsString()
+  gender?: string;
 
-    @IsEmpty()
-    @IsDateString()
-    birthdate?: Date;
+  @IsEmpty()
+  @IsDateString()
+  birthdate?: Date;
 
-    @IsEmpty()
-    @IsString()
-    documentType?: string;
+  @IsEmpty()
+  @IsString()
+  documentType?: string;
 
-    @IsEmpty()
-    @IsString()
-    documentNumber?: string;
+  @IsEmpty()
+  @IsString()
+  documentNumber?: string;
 
-    @IsEmpty()
-    @IsString()
-    civilStatus?: string;
+  @IsEmpty()
+  @IsString()
+  civilStatus?: string;
 
-    @IsEmpty()
-    @IsBoolean()
-    hasLicense?: boolean;
+  @IsEmpty()
+  @IsBoolean()
+  hasLicense?: boolean;
 
-    @IsEmpty()
-    @IsBoolean()
-    hasVehicule?: boolean;
+  @IsEmpty()
+  @IsBoolean()
+  hasVehicule?: boolean;
 
-    @IsEmpty()
-    @IsBoolean()
-    hasRelationInCompany?: boolean;
+  @IsEmpty()
+  @IsBoolean()
+  hasRelationInCompany?: boolean;
 }
 
 export class UpdateUserDto {
-    @IsEmpty()
-    @IsString()
-    auth0Id?: string;
-    
-    @IsEmpty()
-    @IsString()
-    image?: string;
-    
-    @IsEmpty()
-    @IsString()
-    telephone?: string;
-    
-    @IsEmpty()
-    @IsString()
-    phone?: string;
-    
-    @IsEmpty()
-    @IsString()
-    countryId?: string;
-    
-    @IsEmpty()
-    @IsString()
-    nationalityId?: string;
+  @IsEmpty()
+  @IsString()
+  auth0Id?: string;
 
-    @IsEmpty()
-    @IsString()
-    province?: string;
+  @IsEmpty()
+  @IsString()
+  name?: string;
 
-    @IsEmpty()
-    @IsString()
-    gender?: string;
+  @IsEmpty()
+  @IsString()
+  username?: string;
 
-    @IsEmpty()
-    @IsDateString()
-    birthdate?: Date;
+  @IsEmpty()
+  @IsString()
+  email?: string;
 
-    @IsEmpty()
-    @IsString()
-    documentType?: string;
+  @IsEmpty()
+  @IsString()
+  image?: string;
 
-    @IsEmpty()
-    @IsString()
-    documentNumber?: string;
+  @IsEmpty()
+  @IsString()
+  telephone?: string;
 
-    @IsEmpty()
-    @IsString()
-    civilStatus?: string;
+  @IsEmpty()
+  @IsString()
+  phone?: string;
 
-    @IsEmpty()
-    @IsBoolean()
-    hasLicense?: boolean;
+  @IsEmpty()
+  @IsString()
+  country?: string;
 
-    @IsEmpty()
-    @IsBoolean()
-    hasVehicule?: boolean;
+  @IsEmpty()
+  @IsString()
+  nationality?: string;
 
-    @IsEmpty()
-    @IsBoolean()
-    hasRelationInCompany?: boolean;
+  @IsEmpty()
+  @IsString()
+  province?: string;
+
+  @IsEmpty()
+  @IsString()
+  gender?: string;
+
+  @IsEmpty()
+  @IsDateString()
+  birthdate?: Date;
+
+  @IsEmpty()
+  @IsString()
+  documentType?: string;
+
+  @IsEmpty()
+  @IsString()
+  documentNumber?: string;
+
+  @IsEmpty()
+  @IsString()
+  civilStatus?: string;
+
+  @IsEmpty()
+  @IsBoolean()
+  hasLicense?: boolean;
+
+  @IsEmpty()
+  @IsBoolean()
+  hasVehicule?: boolean;
+
+  @IsEmpty()
+  @IsBoolean()
+  hasRelationInCompany?: boolean;
 }
