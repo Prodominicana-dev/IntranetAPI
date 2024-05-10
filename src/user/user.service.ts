@@ -87,7 +87,7 @@ export class UserService {
             include: { degrees: true },
             orderBy: [{ endDate: 'desc' }, { startDate: 'desc' }],
           },
-          language: true,
+          language: { orderBy: { level: 'desc' } },
           personalReference: true,
           answers: true,
           workExperience: true,

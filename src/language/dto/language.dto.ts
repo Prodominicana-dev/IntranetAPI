@@ -1,29 +1,29 @@
-import { IsNotEmpty, IsEmpty, IsString } from "class-validator";
+import { IsNotEmpty, IsEmpty, IsString, IsNumber } from 'class-validator';
 
 export class CreateLanguageDto {
-    @IsNotEmpty()
-    @IsString()
-    name: string;
-    
-    @IsNotEmpty()
-    @IsString()
-    level: string;
+  @IsNotEmpty()
+  @IsString()
+  name: string;
 
-    @IsNotEmpty()
-    @IsString()
-    userId: string;
+  @IsNotEmpty()
+  @IsNumber()
+  level: number;
+
+  @IsNotEmpty()
+  @IsString()
+  userId: string;
 }
 
 export class UpdateLanguageDto {
-    @IsEmpty()
-    @IsString()
-    name?: string;
+  @IsEmpty()
+  @IsString()
+  name?: string;
 
-    @IsEmpty()
-    @IsString()
-    level?: string;
+  @IsEmpty()
+  @IsNumber()
+  level?: number;
 
-    @IsEmpty()
-    @IsString()
-    userId?: string;
+  @IsEmpty()
+  @IsString()
+  userId?: string;
 }
