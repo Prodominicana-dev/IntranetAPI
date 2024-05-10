@@ -88,12 +88,14 @@ export class UserService {
             orderBy: [{ endDate: 'desc' }, { startDate: 'desc' }],
           },
           language: { orderBy: { level: 'desc' } },
-          personalReference: true,
+          personalReference: { orderBy: { createdAt: 'desc' } },
           answers: true,
-          workExperience: true,
+          workExperience: {
+            orderBy: [{ endDate: 'desc' }, { startDate: 'desc' }],
+          },
           applications: true,
-          professionalReference: true,
-          relationship: true,
+          professionalReference: { orderBy: { createdAt: 'desc' } },
+          relationship: { orderBy: { createdAt: 'desc' } },
         },
       });
       return user;
