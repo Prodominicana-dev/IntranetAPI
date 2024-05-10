@@ -114,7 +114,6 @@ model Education{
   institution String
   title String
   area String
-  status Boolean
   degreeId String
   startDate DateTime
   endDate DateTime?

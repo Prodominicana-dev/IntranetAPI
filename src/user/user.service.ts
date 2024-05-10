@@ -83,7 +83,10 @@ export class UserService {
           auth0Id,
         },
         include: {
-          education: true,
+          education: {
+            include: { degrees: true },
+            orderBy: [{ endDate: 'desc' }, { startDate: 'desc' }],
+          },
           language: true,
           personalReference: true,
           answers: true,
