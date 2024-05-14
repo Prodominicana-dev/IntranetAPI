@@ -123,6 +123,12 @@ model Education{
   userId String
   user    User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)  
 }
+// Carreers
+
+model Carreers{
+  id   String @id @default(cuid())
+  name String
+}
 
 // Categoría de educación
 model Degree{

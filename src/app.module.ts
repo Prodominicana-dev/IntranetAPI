@@ -15,9 +15,10 @@ import { CategoryModule } from './category/category.module';
 import { VacancyModule } from './vacancy/vacancy.module';
 import { ApplicationModule } from './application/application.module';
 import { DegreeModule } from './degree/degree.module';
+import { CarrersModule } from './carreers/carriers .module';
 
 @Module({
-  imports: [UserModule, RelationshipModule, QuestionModule, QuestionOptionModule, AnswerModule, WorkExperienceModule, EducationModule, DegreeModule, LanguageModule, PersonalReferenceModule, ProfessionalReferenceModule, CategoryModule, VacancyModule, ApplicationModule],
+  imports: [UserModule, RelationshipModule, QuestionModule, QuestionOptionModule, AnswerModule, WorkExperienceModule, EducationModule, DegreeModule, LanguageModule, PersonalReferenceModule, ProfessionalReferenceModule, CategoryModule, VacancyModule, ApplicationModule, CarrersModule],
   controllers: [AppController],
   providers: [AppService],
 })
