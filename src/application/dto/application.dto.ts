@@ -11,7 +11,16 @@ export class CreateApplicationDto {
     
     @IsNotEmpty()
     @IsString()
-    status: string;
+    status: boolean;
+    
+    @IsEmpty()
+    @IsString()
+    user: any;
+
+    @IsEmpty()
+    @IsString()
+    vacancy: any;
+
 }
 
 export class UpdateApplicationDto {

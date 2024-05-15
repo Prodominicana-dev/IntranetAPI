@@ -13,7 +13,7 @@ import { Response } from 'express';
 import { CreateCarreersDto, UpdateCarreersDto} from './dto/carriers .dto';
 import {CarreersService} from './carriers .service'
 
-@Controller('api/carreers')
+@Controller('api/carriers')
 export class CarreersController {
   constructor( private readonly carreersService: CarreersService ) {}
 

@@ -34,6 +34,9 @@ export class CreateVacancyDto {
         @IsBoolean()
         category:any;
 
+        @IsEmpty()
+        @IsDate()
+        endDate?: Date;
 
 
         
