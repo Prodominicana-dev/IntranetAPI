@@ -265,7 +265,35 @@ model PollQuestion{
   updatedAt DateTime @updatedAt
 }
 
-
+model Employee{
+  id String @id @default(cuid())
+  idCard String
+  firstName String
+  middleName String
+  lastName String
+  secondLastName String
+  birthDate DateTime
+  status String
+  maritalStatus String
+  sexCode  String
+  bloodType String
+  email String
+  telephone String
+  mobilePhone String
+  residenceAdress String
+  residenceReference String
+  residenceCountryCode String
+  residenceCityCode  String
+  residenceBlockCode String
+  residenceAddress String
+  passport String
+  contactName String
+  contactPhone String
+  contactRelationCode String
+  grade String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
 
 
 
