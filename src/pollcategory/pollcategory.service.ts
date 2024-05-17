@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import {CreatePollCommitmentCategoryDto, UpdatePollCommitmentCategoryDto} from './dto/pollcommitmentcategory.dto'
+import {CreatePollCategoryDto, UpdatePollCategoryDto} from './dto/pollcategory.dto'
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
-export class PollcommitmentcategoryService {
+export class PollcategoryService {
  
     constructor(private readonly prismaservice: PrismaService) {}
 
     // Crear una categoría de  encuesta  compromiso 
-    async create(data: CreatePollCommitmentCategoryDto) {
+    async create(data: CreatePollCategoryDto) {
         try {
             const pollcommitmentcategory = await this.prismaservice.pollCommitmentCategory.create({
                 data,
@@ -21,7 +21,7 @@ export class PollcommitmentcategoryService {
     }
 
     // Actualizar una categoría de  encuesta  compromiso 
-    async update(id: string, data: UpdatePollCommitmentCategoryDto) {
+    async update(id: string, data: UpdatePollCategoryDto) {
         try {
             const pollcommitmentcategory = await this.prismaservice.pollCommitmentCategory.update({
                 where: { id },

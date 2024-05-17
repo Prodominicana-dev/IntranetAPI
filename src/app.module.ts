@@ -17,10 +17,12 @@ import { ApplicationModule } from './application/application.module';
 import { DegreeModule } from './degree/degree.module';
 import { CarrersModule } from './carreers/carriers .module';
 import { DirectionModule } from './direction/direction.module';
-import { PollcommitmentcategoryModule } from './pollcommitmentcategory/pollcommitmentcategory.module';
+import { PollcategoryModule} from './pollcategory/pollcategory.module';
+import { DepartmentModule } from './department/department.module';
+import { PollquestionModule } from './pollquestion/pollquestion.module';
 
 @Module({
-  imports: [UserModule, RelationshipModule, QuestionModule, QuestionOptionModule, AnswerModule, WorkExperienceModule, EducationModule, DegreeModule, LanguageModule, PersonalReferenceModule, ProfessionalReferenceModule, CategoryModule, VacancyModule, ApplicationModule, CarrersModule, DirectionModule, PollcommitmentcategoryModule],
+  imports: [UserModule, RelationshipModule, QuestionModule, QuestionOptionModule, AnswerModule, WorkExperienceModule, EducationModule, DegreeModule, LanguageModule, PersonalReferenceModule, ProfessionalReferenceModule, CategoryModule, VacancyModule, ApplicationModule, CarrersModule, DirectionModule, PollcategoryModule, DepartmentModule, PollquestionModule],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -32,7 +32,7 @@ export class DirectionController {
     async update(
         @Param('id') id: string,
         @Body() data: UpdateDirectionDto,
-        res:Response
+        @Res() res:Response
     ) {
         try {
             const direction = await this.directionservice.update(id, data);

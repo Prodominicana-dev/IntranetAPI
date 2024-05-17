@@ -5,12 +5,10 @@ export class CreateDirectionDto {
   @IsString()
   name: string;
 
-
 }
 
 export class UpdateDirectionDto {
   @IsEmpty()
   @IsString()
   name?: string;
-
 }

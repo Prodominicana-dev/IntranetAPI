@@ -1,16 +1,15 @@
 import { IsNotEmpty, IsEmpty, IsString } from "class-validator";
 
-export class CreatePollCommitmentCategoryDto {
+export class CreatePollCategoryDto {
   @IsNotEmpty()
   @IsString()
   name: string;
 
-
 }
 
-export class UpdatePollCommitmentCategoryDto {
+export class UpdatePollCategoryDto {
   @IsEmpty()
   @IsString()
   name?: string;
-
+  
 }
