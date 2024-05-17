@@ -16,9 +16,11 @@ import { VacancyModule } from './vacancy/vacancy.module';
 import { ApplicationModule } from './application/application.module';
 import { DegreeModule } from './degree/degree.module';
 import { CarrersModule } from './carreers/carriers .module';
+import { DirectionModule } from './direction/direction.module';
+import { PollcommitmentcategoryModule } from './pollcommitmentcategory/pollcommitmentcategory.module';
 
 @Module({
-  imports: [UserModule, RelationshipModule, QuestionModule, QuestionOptionModule, AnswerModule, WorkExperienceModule, EducationModule, DegreeModule, LanguageModule, PersonalReferenceModule, ProfessionalReferenceModule, CategoryModule, VacancyModule, ApplicationModule, CarrersModule],
+  imports: [UserModule, RelationshipModule, QuestionModule, QuestionOptionModule, AnswerModule, WorkExperienceModule, EducationModule, DegreeModule, LanguageModule, PersonalReferenceModule, ProfessionalReferenceModule, CategoryModule, VacancyModule, ApplicationModule, CarrersModule, DirectionModule, PollcommitmentcategoryModule],
   controllers: [AppController],
   providers: [AppService],
 })

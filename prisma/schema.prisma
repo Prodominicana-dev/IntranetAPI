@@ -224,4 +224,48 @@ model Application{
 }
 
 
+// directions
+model Direction{
+  id String @id @default(cuid())
+  name String
+  departments  Department[]
+  pollquestion PollQuestion[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//Poll commitment Category
+model PollCommitmentCategory{
+  id String @id @default(cuid())
+  name String
+  pollquestion PollQuestion[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Departments
+model Department{
+ id String @id @default(cuid())
+ name String
+ directionsId String
+ directions  Direction  @relation(fields: [directionsId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+ createdAt DateTime @default(now())
+ updatedAt DateTime @updatedAt
+}
+
+// Poll Questions 
+model PollQuestion{
+  id String @id @default(cuid())
+  name String
+  directionsId String
+  pollquestioncategoryId String
+  directions  Direction  @relation(fields: [directionsId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  pollCommitmentcategory PollCommitmentCategory  @relation(fields: [pollquestioncategoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+
+
 
