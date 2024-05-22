@@ -149,7 +149,6 @@ model Language{
   user    User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  
 }
 
 // Referencia personal
@@ -186,8 +185,8 @@ model ProfessionalReference{
 // Categorías de vacantes
 model Category{
   id       String   @id @default(cuid())
+  icon String?
   name String
-  description String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   vacancies Vacancy[]
@@ -198,12 +197,15 @@ model Vacancy{
   id       String   @id @default(cuid())
   title String
   description String
-  requirements String
-  salary String
-  currency String
-  startDate DateTime
-  status Boolean
-  endDate DateTime?
+  age Int?
+  language Json[]
+  hasLicense Boolean?
+  hasVehicule Boolean?
+  province String?
+  experience Int?
+  degree String?
+  academic_level String?
+  status Boolean @default(true)
   category Category @relation(fields: [categoryId], references: [id])
   categoryId String
   createdAt DateTime @default(now())

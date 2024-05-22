@@ -49,7 +49,10 @@ export class CategoryService {
   // Obtener todas las categorías
   async getAll() {
     try {
-      const categories = await this.prismaService.category.findMany();
+      const categories = await this.prismaService.category.findMany({
+        orderBy: { createdAt: 'asc' },
+        include: { vacancies: true, _count: { select: { vacancies: true } } },
+      });
       return categories;
     } catch (error) {
       console.log(error);
