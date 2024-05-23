@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import{PrismaService} from 'src/prisma/prisma.service'
-import { CreateVacancyDto, UpdateVacancyDto  } from './dto/vacancy.dto'
+import { PrismaService } from 'src/prisma/prisma.service';
+import { CreateVacancyDto, UpdateVacancyDto } from './dto/vacancy.dto';
 
 @Injectable()
 export class VacancyService {
-constructor(private readonly prismaService: PrismaService) {}
+  constructor(private readonly prismaService: PrismaService) {}
 
-// Crear una vacante
-async create(data: CreateVacancyDto) {
+  // Crear una vacante
+  async create(data: any) {
     try {
       const vacancy = await this.prismaService.vacancy.create({
         data,
@@ -20,7 +20,7 @@ async create(data: CreateVacancyDto) {
   }
 
   // Actualizar una vacante
-  async update(id: string, data: UpdateVacancyDto) {
+  async update(id: string, data: any) {
     try {
       const vacancy = await this.prismaService.vacancy.update({
         where: { id },
@@ -47,27 +47,35 @@ async create(data: CreateVacancyDto) {
   }
   // Obtener todas las vacantes
 
-    async getAll() {
-        try {
-            const vacancies = await this.prismaService.vacancy.findMany();
-            return vacancies;
-        } catch (error) {
-            console.log(error)
-            throw new Error('Error al obtener las vacantes');
-        }
+  async getAll() {
+    try {
+      const vacancies = await this.prismaService.vacancy.findMany({
+        include: {
+          career: true,
+          category: true,
+          applications: true,
+          degree: true,
+          _count: { select: { applications: true } },
+        },
+      });
+      return vacancies;
+    } catch (error) {
+      console.log(error);
+      throw new Error('Error al obtener las vacantes');
     }
+  }
 
-    
-    // Obtener una vacante por id
+  // Obtener una vacante por id
 
-    async getById(id: string) {
-        try {
-            const vacancy = await this.prismaService.vacancy.findUnique({ where: { id } });
-            return vacancy;
-        } catch (error) {
-            console.log(error)
-            throw new Error('Error al obtener la vacante');
-        }
+  async getById(id: string) {
+    try {
+      const vacancy = await this.prismaService.vacancy.findUnique({
+        where: { id },
+      });
+      return vacancy;
+    } catch (error) {
+      console.log(error);
+      throw new Error('Error al obtener la vacante');
     }
-    
+  }
 }

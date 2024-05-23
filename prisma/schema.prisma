@@ -128,6 +128,9 @@ model Education{
 model Carreers{
   id   String @id @default(cuid())
   name String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  vacancy Vacancy[]
 }
 
 // Categoría de educación
@@ -138,6 +141,7 @@ model Degree{
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   education Education[]
+  vacancy Vacancy[]
 }
 
 // Idioma
@@ -202,9 +206,11 @@ model Vacancy{
   hasLicense Boolean?
   hasVehicule Boolean?
   province String?
-  experience Int?
-  degree String?
-  academic_level String?
+  experience String?
+  degreeId String?
+  degree Degree? @relation(fields: [degreeId], references: [id])
+  careerId String?
+  career Carreers? @relation(fields: [careerId], references: [id])
   status Boolean @default(true)
   category Category @relation(fields: [categoryId], references: [id])
   categoryId String
