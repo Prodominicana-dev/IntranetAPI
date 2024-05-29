@@ -88,4 +88,19 @@ export class VacancyController {
       return res.status(500).json({ message: error.message });
     }
   }
+
+  // Validar si el usuario ya aplico a la vacante
+  @Get(':id/apply/:userId')
+  async userApplied(
+    @Param('userId') userId: string,
+    @Param('id') vacancyId: string,
+    @Res() res: Response,
+  ) {
+    try {
+      const applied = await this.vacancyService.userApplied(userId, vacancyId);
+      return res.status(200).json(applied);
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
+    }
+  }
 }

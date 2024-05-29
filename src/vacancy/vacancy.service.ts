@@ -85,4 +85,19 @@ export class VacancyService {
       throw new Error('Error al obtener la vacante');
     }
   }
+  // Validar si el usuario ya aplico a la vacante
+  async userApplied(userId: string, vacancyId: string) {
+    try {
+      const application = await this.prismaService.application.findFirst({
+        where: {
+          userId,
+          vacancyId,
+        },
+      });
+      return application;
+    } catch (error) {
+      console.log(error);
+      throw new Error('Error al obtener la aplicación');
+    }
+  }
 }
