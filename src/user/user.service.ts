@@ -84,12 +84,15 @@ export class UserService {
         },
         include: {
           education: {
-            include: { degrees: true },
+            include: { degrees: true, careers: true },
             orderBy: [{ endDate: 'desc' }, { startDate: 'desc' }],
           },
           language: { orderBy: { level: 'desc' } },
           personalReference: { orderBy: { createdAt: 'desc' } },
-          answers: true,
+          answers: {
+            include: { question: true },
+            orderBy: { createdAt: 'desc' },
+          },
           workExperience: {
             orderBy: [{ endDate: 'desc' }, { startDate: 'desc' }],
           },

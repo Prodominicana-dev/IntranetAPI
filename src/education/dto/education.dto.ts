@@ -11,17 +11,21 @@ export class CreateEducationDto {
   @IsString()
   institution: string;
 
-  @IsNotEmpty()
+  @IsEmpty()
   @IsString()
-  title: string;
+  title?: string;
 
-  @IsNotEmpty()
+  @IsEmpty()
   @IsString()
-  area: string;
+  area?: string;
 
   @IsNotEmpty()
   @IsString()
   degreeId: string;
+
+  @IsEmpty()
+  @IsString()
+  careerId: string;
 
   @IsNotEmpty()
   @IsDate()
@@ -52,6 +56,10 @@ export class UpdateEducationDto {
   @IsEmpty()
   @IsString()
   degreeId?: string;
+
+  @IsEmpty()
+  @IsString()
+  careerId: string;
 
   @IsEmpty()
   @IsDate()
