@@ -11,7 +11,7 @@ import {
 import { Response } from 'express';
 import { CreateVacancyDto, UpdateVacancyDto } from './dto/vacancy.dto';
 import { VacancyService } from './vacancy.service';
-@Controller('api/vacancy')
+@Controller('v1/vacancy')
 export class VacancyController {
   constructor(private readonly vacancyService: VacancyService) {}
 

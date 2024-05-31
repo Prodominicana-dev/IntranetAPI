@@ -15,7 +15,7 @@ import {
   UpdateRelationshipDto,
 } from './dto/relationship.dto';
 
-@Controller('api/relationship')
+@Controller('v1/relationship')
 export class RelationshipController {
   constructor(private readonly relationshipService: RelationshipService) {}
 

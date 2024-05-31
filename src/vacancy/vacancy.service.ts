@@ -57,6 +57,7 @@ export class VacancyService {
           degree: true,
           _count: { select: { applications: true } },
         },
+        orderBy: { createdAt: 'desc' },
       });
       return vacancies;
     } catch (error) {

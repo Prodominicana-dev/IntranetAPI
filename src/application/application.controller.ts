@@ -14,7 +14,7 @@ import {
   UpdateApplicationDto,
 } from './dto/application.dto';
 import { ApplicationService } from './application.service';
-@Controller('api/application')
+@Controller('v1/application')
 export class ApplicationController {
   constructor(private readonly aplicactionsService: ApplicationService) {}
 

@@ -20,7 +20,7 @@ const fs = require('fs');
 const path = require('path');
 const mime = require('mime-types');
 
-@Controller('api/category')
+@Controller('v1/category')
 export class CategoryController {
   constructor(private readonly categoryService: CategoryService) {}
 
