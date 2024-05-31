@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'Empleo',
+      name: 'IntranetAPI',
       script: 'npm',
       args: 'start',
       cwd: '/var/www/IntranetAPI', // Ruta del directorio del proyecto en el servidor
