@@ -20,9 +20,10 @@ import { DirectionModule } from './direction/direction.module';
 import { PollcategoryModule} from './pollcategory/pollcategory.module';
 import { DepartmentModule } from './department/department.module';
 import { PollquestionModule } from './pollquestion/pollquestion.module';
+import { CvModule } from './cv/cv.module';
 
 @Module({
-  imports: [UserModule, RelationshipModule, QuestionModule, QuestionOptionModule, AnswerModule, WorkExperienceModule, EducationModule, DegreeModule, LanguageModule, PersonalReferenceModule, ProfessionalReferenceModule, CategoryModule, VacancyModule, ApplicationModule, CarrersModule, DirectionModule, PollcategoryModule, DepartmentModule, PollquestionModule],
+  imports: [UserModule, RelationshipModule, QuestionModule, QuestionOptionModule, AnswerModule, WorkExperienceModule, EducationModule, DegreeModule, LanguageModule, PersonalReferenceModule, ProfessionalReferenceModule, CategoryModule, VacancyModule, ApplicationModule, CarrersModule, DirectionModule, PollcategoryModule, DepartmentModule, PollquestionModule, CvModule],
   controllers: [AppController],
   providers: [AppService],
 })

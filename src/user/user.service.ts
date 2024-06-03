@@ -31,7 +31,11 @@ export class UserService {
         where: {
           id,
         },
-        data,
+        data: {
+          ...data,
+          hasLicense: Boolean(data.hasLicense),
+          hasVehicule: Boolean(data.hasVehicule),
+        },
       });
       return user;
     } catch (error) {
@@ -99,6 +103,7 @@ export class UserService {
           applications: true,
           professionalReference: { orderBy: { createdAt: 'desc' } },
           relationship: { orderBy: { createdAt: 'desc' } },
+          cv: true,
         },
       });
       return user;
@@ -124,6 +129,7 @@ export class UserService {
           applications: true,
           professionalReference: true,
           relationship: true,
+          cv: true,
         },
       });
       return user;
