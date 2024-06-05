@@ -15,7 +15,11 @@ export class UserService {
   async create(data: CreateUserDto) {
     try {
       const user = await this.prisma.user.create({
-        data,
+        data: {
+          ...data,
+          hasLicense: Boolean(data.hasLicense),
+          hasVehicule: Boolean(data.hasVehicule),
+        },
       });
       return user;
     } catch (error) {
@@ -27,14 +31,19 @@ export class UserService {
   // Editar un usuario
   async update(id: string, data: UpdateUserDto) {
     try {
+      console.log(data.hasLicense, data.hasVehicule);
+      // convertir de string a boolean el hasLicense y hasVehicule
+      const hasLicense = Boolean(data.hasLicense);
+      const hasVehicule = Boolean(data.hasVehicule);
+      console.log(hasLicense, hasVehicule);
       const user = await this.prisma.user.update({
         where: {
           id,
         },
         data: {
           ...data,
-          hasLicense: Boolean(data.hasLicense),
-          hasVehicule: Boolean(data.hasVehicule),
+          hasLicense: hasLicense,
+          hasVehicule: hasVehicule,
         },
       });
       return user;
