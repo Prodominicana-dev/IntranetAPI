@@ -80,7 +80,7 @@ export class ApplicationService {
     try {
       const approved = await this.primsmaService.application.update({
         where: { id },
-        data: { status: '' },
+        data: { status: 'approved' },
       });
       return approved;
     } catch (error) {
@@ -89,66 +89,16 @@ export class ApplicationService {
     }
   }
 
-  async approvedGetAll(id: string) {
-    try {
-      const approved = await this.primsmaService.application.findMany({
-        where: { userId: id },
-      });
-      return approved;
-    } catch (error) {
-      console.log(error);
-      throw new Error(
-        'Error en obtener las  aprobaciones de las Aplicaciones ',
-      );
-    }
-  }
-
-  async approvedGetById(id: string) {
-    try {
-      const approved = await this.primsmaService.application.findUnique({
-        where: { id },
-      });
-      return approved;
-    } catch (error) {
-      console.log(error);
-      throw new Error('Error en obtener la aprobarcion de  la aplicación');
-    }
-  }
-
   async dismissedUpdate(id: string) {
     try {
       const dismissed = await this.primsmaService.application.update({
         where: { id },
-        data: { status: '' },
+        data: { status: 'denied' },
       });
       return dismissed;
     } catch (error) {
       console.log(error);
       throw new Error('Error en  actualizar la aprobacion de la aplicación');
-    }
-  }
-
-  async dismissedGetAll(id: string) {
-    try {
-      const dismissed = await this.primsmaService.application.findMany({
-        where: { userId: id },
-      });
-      return dismissed;
-    } catch (error) {
-      console.log(error);
-      throw new Error('Error al rechazo  de las Aplicaciones');
-    }
-  }
-
-  async dismissedGetById(id: string) {
-    try {
-      const demissed = await this.primsmaService.application.findUnique({
-        where: { id },
-      });
-      return demissed;
-    } catch (error) {
-      console.log(error);
-      throw new Error('Error al rechazo de la aplicación');
     }
   }
 
@@ -175,7 +125,30 @@ export class ApplicationService {
         where: {
           vacancyId,
         },
-        include: { user: true, vacancy: true },
+        include: {
+          user: {
+            include: {
+              education: {
+                include: { degrees: true, careers: true },
+                orderBy: [{ endDate: 'desc' }, { startDate: 'desc' }],
+              },
+              language: { orderBy: { level: 'desc' } },
+              personalReference: { orderBy: { createdAt: 'desc' } },
+              answers: {
+                include: { question: true },
+                orderBy: { createdAt: 'desc' },
+              },
+              workExperience: {
+                orderBy: [{ endDate: 'desc' }, { startDate: 'desc' }],
+              },
+              applications: true,
+              professionalReference: { orderBy: { createdAt: 'desc' } },
+              relationship: { orderBy: { createdAt: 'desc' } },
+              cv: true,
+            },
+          },
+          vacancy: true,
+        },
       });
       return applications;
     } catch (error) {

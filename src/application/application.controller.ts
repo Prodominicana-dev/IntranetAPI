@@ -89,7 +89,7 @@ export class ApplicationController {
   }
 
   // Obtener todas las aplicaciones de una vacante
-  @Get('/vacancy/:id')
+  @Get('/v/:id')
   async getByJobId(@Param('id') id: string, @Res() res: Response) {
     try {
       const applications = await this.aplicactionsService.getAllByVacancy(id);
@@ -109,51 +109,11 @@ export class ApplicationController {
     }
   }
 
-  @Get('/approved')
-  async aprovedGetAll(@Param('id') id: string, @Res() res: Response) {
-    try {
-      const aproved = await this.aplicactionsService.approvedGetAll(id);
-      return res.status(200).json(aproved);
-    } catch (error) {
-      return res.status(500).json({ message: error.message });
-    }
-  }
-
-  @Get('/approved/:id')
-  async aprovedGetById(@Param('id') id: string, @Res() res: Response) {
-    try {
-      const aproved = await this.aplicactionsService.approvedGetById(id);
-      return res.status(200).json(aproved);
-    } catch (error) {
-      return res.status(500).json({ message: error.message });
-    }
-  }
-
-  @Patch('/dismissed/:id')
+  @Patch('/denied/:id')
   async dismissedUpdate(@Param('id') id: string, @Res() res: Response) {
     try {
       const dismissed = await this.aplicactionsService.dismissedUpdate(id);
       return res.status(200).json(dismissed);
-    } catch (error) {
-      return res.status(500).json({ message: error.message });
-    }
-  }
-
-  @Get('/dismissed')
-  async dismissedGetAll(@Param('id') id: string, @Res() res: Response) {
-    try {
-      const aproved = await this.aplicactionsService.dismissedGetAll(id);
-      return res.status(200).json(aproved);
-    } catch (error) {
-      return res.status(500).json({ message: error.message });
-    }
-  }
-
-  @Get('/dismissed/:id')
-  async dismissedGetById(@Param('id') id: string, @Res() res: Response) {
-    try {
-      const aproved = await this.aplicactionsService.dismissedGetById(id);
-      return res.status(200).json(aproved);
     } catch (error) {
       return res.status(500).json({ message: error.message });
     }

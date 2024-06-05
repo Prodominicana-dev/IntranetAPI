@@ -49,6 +49,18 @@ export class VacancyController {
     @Res() res: Response,
   ) {
     try {
+      // Convertir hasLicense y hasVehicule a boolean
+      data.hasLicense = data.hasLicense === 'true' ? true : false;
+      data.hasVehicule = data.hasVehicule === 'true' ? true : false;
+      // Si la edad es diferente a 'cualquiera' convertir a número
+      if (data.age !== 'cualquiera') {
+        data.age = parseInt(data.age);
+      } else {
+        data.age = null;
+      }
+      data.careerId === 'cualquiera' ? (data.careerId = null) : data.careerId;
+      // Convertir language a JSON.parse
+      //data.language = JSON.parse(data.language);
       const vacancy = await this.vacancyService.update(id, data);
       return res.status(200).json(vacancy);
     } catch (error) {
@@ -60,8 +72,8 @@ export class VacancyController {
   @Delete(':id')
   async delete(@Param('id') id: string, @Res() res: Response) {
     try {
-      await this.vacancyService.delete(id);
-      return res.status(204).json();
+      const vacancy = await this.vacancyService.delete(id);
+      return res.status(200).json(vacancy);
     } catch (error) {
       return res.status(500).json({ message: error.message });
     }
