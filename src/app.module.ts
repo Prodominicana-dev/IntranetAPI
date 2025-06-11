@@ -21,10 +21,13 @@ import { PollcategoryModule} from './pollcategory/pollcategory.module';
 import { DepartmentModule } from './department/department.module';
 import { PollquestionModule } from './pollquestion/pollquestion.module';
 import { CvModule } from './cv/cv.module';
+import { MailService } from './mail/mail.service';
+import { MailController } from './mail/mail.controller';
+import { MailModule } from './mail/mail.module';
 
 @Module({
-  imports: [UserModule, RelationshipModule, QuestionModule, QuestionOptionModule, AnswerModule, WorkExperienceModule, EducationModule, DegreeModule, LanguageModule, PersonalReferenceModule, ProfessionalReferenceModule, CategoryModule, VacancyModule, ApplicationModule, CarrersModule, DirectionModule, PollcategoryModule, DepartmentModule, PollquestionModule, CvModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [UserModule, RelationshipModule, QuestionModule, QuestionOptionModule, AnswerModule, WorkExperienceModule, EducationModule, DegreeModule, LanguageModule, PersonalReferenceModule, ProfessionalReferenceModule, CategoryModule, VacancyModule, ApplicationModule, CarrersModule, DirectionModule, PollcategoryModule, DepartmentModule, PollquestionModule, CvModule, MailModule],
+  controllers: [AppController, MailController],
+  providers: [AppService, MailService],
 })
 export class AppModule {}

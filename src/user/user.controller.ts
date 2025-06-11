@@ -124,6 +124,7 @@ export class UserController {
   // Obtener un usuario por auth0Id
   @Get('a/:auth0Id')
   async findByAuth0Id(@Param('auth0Id') auth0Id: string, @Res() res: Response) {
+    console.log('Received 0Id:',auth0Id);
     try {
       const user = await this.userService.findByAuth0Id(auth0Id);
       return res.status(200).json(user);
