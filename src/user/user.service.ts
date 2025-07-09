@@ -31,10 +31,17 @@ export class UserService {
   // Editar un usuario
   async update(id: string, data: UpdateUserDto) {
     try {
-      console.log(data.hasLicense, data.hasVehicule);
+
+
+      // console.log(data.hasLicense, data.hasVehicule);
       // convertir de string a boolean el hasLicense y hasVehicule
-      const hasLicense = Boolean(data.hasLicense);
-      const hasVehicule = Boolean(data.hasVehicule);
+
+      const hasLicense = data.hasLicense === 'true';
+      const hasVehicule = data.hasVehicule === 'true'
+
+
+      // console.log("hasLicense:", hasLicense);     // false si checkbox no está marcado
+      // console.log("hasVehicule:", hasVehicule);
       console.log(hasLicense, hasVehicule);
       const user = await this.prisma.user.update({
         where: {

@@ -146,11 +146,11 @@ export class UpdateUserDto {
 
   @IsEmpty()
   @IsBoolean()
-  hasLicense?: boolean;
+  hasLicense?: string | boolean;
 
   @IsEmpty()
   @IsBoolean()
-  hasVehicule?: boolean;
+  hasVehicule?: string | boolean;
 
   @IsEmpty()
   @IsBoolean()
