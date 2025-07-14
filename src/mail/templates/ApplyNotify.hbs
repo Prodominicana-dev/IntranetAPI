@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nueva aplicación recibida</title>
+  <style>
+    body {
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      background-color: #f9fafb;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 2rem auto;
+      background-color: #ffffff;
+      border-radius: 0.75rem;
+      padding: 2rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .header img {
+      max-width: 200px;
+    }
+    .title {
+      background-color: #2563eb;
+      color: white;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+    .content p {
+      font-size: 1rem;
+      margin: 1rem 0;
+    }
+    .details {
+      background-color: #f3f4f6;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-top: 1rem;
+    }
+    .details p {
+      margin: 0.5rem 0;
+    }
+    .button-container {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .button {
+      display: inline-block;
+      background-color: #2563eb;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    .button:hover {
+      background-color: #1e40af;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="https://sinim.prodominicana.gob.do/images/logo/prodominicana.png" alt="Logo ProDominicana" />
+    </div>
+
+    <div class="title">
+      Nueva aplicación a vacante recibida
+    </div>
+
+    <div class="content">
+      <p>Se ha recibido una nueva aplicación a través del portal <strong>empleos.prodominicana.gob.do</strong>.</p>
+
+      <div class="details">
+        <p><strong>Vacante:</strong> {{VacancyName}}</p>
+        <p><strong>Nombre del aplicante:</strong> {{UserName}}</p>
+        <p><strong>Correo electrónico:</strong> {{email}}</p>
+        <p><strong>Teléfono fijo:</strong> {{telephone}}</p>
+        <p><strong>Celular:</strong> {{phone}}</p>
+      </div>
+
+
+      <p>Puede ingresar al sistema para revisar el perfil y gestionar el proceso de selección.</p>
+      <div class="button-container">
+        <a class="button" href="https://empleosadmin.prodominicana.gob.do/vacancy" target="_blank">
+          Ver detalles de la vacante
+        </a>
+      </div>
+    </div>
+
+    <div class="footer">
+      ProDominicana © 2025 – Centro de Exportación e Inversión de la República Dominicana
+    </div>
+  </div>
+</body>
+</html>
