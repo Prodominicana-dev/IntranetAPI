@@ -30,7 +30,7 @@ export class MailController {
     // console.log('data', data);
 
     return this.mailService.ApplyNotify(
-      'josegarcia@prodominicana.gob.do',
+      'ramiraramirez@prodominicana.gob.do',
       data.email,
       data.UserName,
       data.telephone,
@@ -38,7 +38,7 @@ export class MailController {
       data.VacancyName
     );
     //josegarcia@prodominicana.gob.do
-    //tatianalorenzo@prodominicana.gob.do este correo es que se debe poner arriba
+    //ramiraramirez@prodominicana.gob.do este correo es que se debe poner arriba
   }
 
 
